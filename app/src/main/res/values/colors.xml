@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- 색상코드 추가-->
+    <color name="mainColor">#ffd400</color>
 </resources>
