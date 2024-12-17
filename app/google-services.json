@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "24867870370",
+    "project_id": "sololife-f2d60",
+    "storage_bucket": "sololife-f2d60.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24867870370:android:1f270c36a7a73d2f9de9fb",
+        "android_client_info": {
+          "package_name": "com.taewoo.sololifeapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB69MNeG55CIZ2ktyz8prJEytZn_bxr2vo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
