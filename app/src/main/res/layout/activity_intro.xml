@@ -54,13 +54,14 @@
                     android:layout_height="60dp"/>
 
                 <Button
+                    android:id="@+id/noAccountBtn"
                     android:text="비회원 가입"
-                    android:id="@+id/noJoinBtn"
                     android:background="@drawable/background_radius"
                     android:textSize = "20sp"
                     android:layout_width="match_parent"
                     android:layout_margin="5dp"
                     android:layout_height="60dp"/>
+
             </LinearLayout>
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
