@@ -81,10 +81,12 @@ class JoinActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         Toast.makeText(this, "성공", Toast.LENGTH_LONG).show()
                         val intent = Intent(this, MainActivity::class.java)
+
+                        /** 회원가입 이후 뒤로가기를 할 경우 앱종료 **/
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
                         startActivity(intent)
                     } else {
                         Toast.makeText(this, "실패", Toast.LENGTH_LONG).show()
-
                     }
                 }
 
