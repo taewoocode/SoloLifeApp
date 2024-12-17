@@ -1,5 +1,6 @@
 package com.taewoo.sololifeapp.auth
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Adapter
 import android.widget.AdapterView
@@ -19,6 +20,20 @@ class IntroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_intro)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_intro)
+
+        /** loginBtn 클릭시 이동 **/
+        binding.loginBtn.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        /** joinBtn 클릭시 이동 **/
+        binding.joinBtn.setOnClickListener {
+            val intent = Intent(this, JoinActivity::class.java)
+             startActivity(intent)
+        }
+
+
 
     }
 }
