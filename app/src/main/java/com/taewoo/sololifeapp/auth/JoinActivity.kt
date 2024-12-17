@@ -25,7 +25,7 @@ class JoinActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
-        binding = DataBindingUtil. setContentView(this, R.layout.activity_join)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_join)
 
         /** joinBtn 클릭 **/
         binding.joinBtn.setOnClickListener {
@@ -42,6 +42,8 @@ class JoinActivity : AppCompatActivity() {
     }
 
     fun isValidate(email: String, password1: String, password2: String) {
+
+        isGoToJoin = true // 매번 검증 시작 전에 true로 초기화
 
         /** 이메일이 비었는지 **/
         if (email.isEmpty()) {
@@ -70,27 +72,29 @@ class JoinActivity : AppCompatActivity() {
         }
 
         /** 비밀번호 6  자리 이상으로 입력 **/
-        if (password1.length < 6)
+        if (password1.length < 6) {
             Toast.makeText(this, "비밀번호를 6자리 이상으로 입력해주세요.", Toast.LENGTH_SHORT).show()
-        isGoToJoin = false;
+            isGoToJoin = false;
+        }
 
-        /** 위에 검증을 모두 통과한다면 **/
+
+        /** 위 검증 결과에 따라 회원가입 로직 실행 **/
         if (isGoToJoin) {
-            auth.signInWithEmailAndPassword(email, password1)
+            auth.createUserWithEmailAndPassword(email, password1)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this, "성공", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "회원가입 성공", Toast.LENGTH_LONG).show()
                         val intent = Intent(this, MainActivity::class.java)
-                        /** 회원가입 이후 뒤로가기를 할 경우 앱종료 **/
-                        intent.flags =
-                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
                         startActivity(intent)
                     } else {
-                        Toast.makeText(this, "실패", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this,
+                            "회원가입 실패: ${task.exception?.message}",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
-
-
         }
     }
 }
