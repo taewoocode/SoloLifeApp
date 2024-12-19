@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.taewoo.sololifeapp.R
 import com.taewoo.sololifeapp.databinding.FragmentHomeBinding
 
@@ -47,8 +48,12 @@ class HomeFragment : Fragment() {
         binding.tipTap.setOnClickListener {
             Log.d("HomeFragment", "tipTap")
             Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
-        }
 
+            /** tip버튼을 누르면 tip으로 이동 **/
+            // it으로 전달된 객체를 참조한다. -> 여기서 말하는 객체는 뷰
+            it.findNavController().navigate(R.id.action_homeFragment_to_tipFragment)
+
+        }
         return binding.root
     }
 }
