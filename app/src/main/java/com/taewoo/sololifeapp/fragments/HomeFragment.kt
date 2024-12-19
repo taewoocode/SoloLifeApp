@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
 
         binding.tipTap.setOnClickListener {
             Log.d("HomeFragment", "tipTap")
-            Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
         }
 
         return binding.root
