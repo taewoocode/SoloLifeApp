@@ -1,5 +1,6 @@
 package com.taewoo.sololifeapp.auth
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -16,6 +17,7 @@ import com.taewoo.sololifeapp.R
 import com.taewoo.sololifeapp.databinding.ActivityJoinBinding
 
 class JoinActivity : AppCompatActivity() {
+
 
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityJoinBinding
