@@ -5,19 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.taewoo.sololifeapp.R
+import com.taewoo.sololifeapp.databinding.FragmentTalkBinding
 
 // TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [TalkFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class TalkFragment : Fragment() {
+
+    private lateinit var binding : FragmentTalkBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +23,20 @@ class TalkFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_talk, container, false)
-    }
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_talk, container, false)
 
+        binding.homeTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_talkFragment_to_homeFragment)
+        }
+        binding.storeTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_talkFragment_to_storeFragment)
+        }
+        binding.bookmarkTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_talkFragment_to_bookmarkFragment)
+        }
+        binding.tipTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_talkFragment_to_tipFragment)
+        }
+        return binding.root
+    }
 }
