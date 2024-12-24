@@ -27,7 +27,6 @@ class TipFragment : Fragment() {
         binding.homeTap.setOnClickListener {
             /** tip -> home **/
             it.findNavController().navigate(R.id.action_tipFragment_to_homeFragment)
-
         }
         binding.tipTap.setOnClickListener {
             it.findNavController().navigate(R.id.action_tipFragment_to_talkFragment)
