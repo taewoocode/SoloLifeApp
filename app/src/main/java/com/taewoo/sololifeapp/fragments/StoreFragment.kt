@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.taewoo.sololifeapp.R
 import com.taewoo.sololifeapp.databinding.FragmentStoreBinding
 
@@ -22,9 +23,22 @@ class StoreFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.tip, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_store, container, false)
+        binding.homeTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_storeFragment_to_homeFragment)
+        }
 
+        binding.bookmarkTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_storeFragment_to_bookmarkFragment)
+        }
 
-        return inflater.inflate(R.layout.fragment_store, container, false)
+        binding.tipTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_storeFragment_to_tipFragment)
+        }
+
+        binding.talkTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_storeFragment_to_talkFragment)
+        }
+        return binding.root
     }
 }
