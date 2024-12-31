@@ -45,6 +45,7 @@ android {
 
 dependencies {
     implementation("com.github.bumptech.glide:glide:4.12.0")
+    implementation(libs.firebase.database.ktx)
     kapt("com.github.bumptech.glide:compiler:4.12.0") // kapt 사용
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

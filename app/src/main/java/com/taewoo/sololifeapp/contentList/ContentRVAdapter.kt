@@ -10,17 +10,33 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.taewoo.sololifeapp.R
 
-class ContentRVAdapter(val context: Context, val items : ArrayList<ContentModel>) : RecyclerView.Adapter<ContentRVAdapter.ViewHolder>() {
+class ContentRVAdapter(val context: Context, val items : ArrayList<ContentModel>) : RecyclerView.Adapter<ContentRVAdapter.Viewholder>() {
+
+    interface ItemClick{
+        fun onClick(view: View, position: Int)
+    }
+
+    var itemClick: ItemClick? = null
+
+
+
 
     // 아이템 레이아웃
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContentRVAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContentRVAdapter.Viewholder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.content_rv_item, parent, false)
-        return ViewHolder(v)
+        return Viewholder(v)
     }
 
     override fun onBindViewHolder(holder: ContentRVAdapter.Viewholder, position: Int) {
+        // 아이템 바인딩
+        if (itemClick != null) {
+            holder.itemView.setOnClickListener { v ->
+                itemClick?.onClick(v, position)
+            }
+        }
         holder.bindItems(items[position])
     }
+
 
     // 아이템 갯수
     override fun getItemCount(): Int {
@@ -28,7 +44,7 @@ class ContentRVAdapter(val context: Context, val items : ArrayList<ContentModel>
     }
 
     // 아이템 내용물
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)   {
+    inner class Viewholder(itemView: View) : RecyclerView.ViewHolder(itemView)   {
 
         fun bindItems(item: ContentModel) {
 

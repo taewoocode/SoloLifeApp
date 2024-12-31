@@ -9,8 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.bokchi.mysolelife.contentsList.ContentListActivity
 import com.taewoo.sololifeapp.R
-import com.taewoo.sololifeapp.contentList.ContentListActivity
 import com.taewoo.sololifeapp.databinding.FragmentTipBinding
 
 class TipFragment : Fragment() {
